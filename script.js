@@ -25,19 +25,19 @@ function cityChange(event) {
   newCity.innerHTML = currentCity.value;
 }
 
-let searchForm = document.querySelector("#search-form");
-searchForm.addEventListener("submit", cityChange);
+//let searchForm = document.querySelector("#search-form");
+//searchForm.addEventListener("submit", cityChange);
 
 //search for city
 function searchCity(event) {
   let apiKey = "3499ef150985eccadd080ff408a018df";
-  let cityName = document.querySelector("city-input.value");
+  let cityName = document.querySelector("city-input").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
 
   axios.get(apiUrl).then(showWeather);
 }
 
-let form = document.querySelector("form");
+let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
 
 // show weather
@@ -54,6 +54,4 @@ function showWeather(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-
-  axios.get(apiUrl).then(showWeather);
 }
