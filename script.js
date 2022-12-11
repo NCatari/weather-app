@@ -13,7 +13,15 @@ if (minutes < 10) {
   minutes = `0${minutes}`;
 }
 
-let days = ["Sunday", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 let day = days[now.getDay()];
 
 p.innerHTML = `${day} ${date} ${hours}:${minutes}`;
@@ -40,7 +48,7 @@ function searchCity(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
 
-// show weather
+// showing the weather
 function showWeather(response) {
   document.querySelector("#current-city").innerHTML = response.data.name;
   document.querySelector("#current-condition").innerHTML =
@@ -48,10 +56,10 @@ function showWeather(response) {
   document.querySelector("#current-temp").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector("#precipitation").innerHTML =
-    response.data.main.precipitation;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
+  axios.get(apiUrl).then(showWeather);
 }
