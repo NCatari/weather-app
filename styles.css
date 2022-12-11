@@ -59,11 +59,8 @@ p {
   left: 125px;
 }
 
-.col-3 {
-  font-size: 32px;
-  right: 300px;
-}
 ul {
+  font-size: 36px;
   list-style-type: none;
   text-align: center;
   position: relative;
